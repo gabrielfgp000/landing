@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Gonzalez Puente | Fractional Chief of Staff</title>
+    
+    <!-- Fuentes oficiales de Ai Inversiones y sites fintech de alta gama -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables de diseño - Estética Ai Inversiones */
+        :root {
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-serif: 'Instrument Serif', Georgia, serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --bg-main: #08090d;
+            --bg-card: rgba(255, 255, 255, 0.025);
+            --bg-card-hover: rgba(255, 255, 255, 0.045);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.18);
+            
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-green: #22c55e;
+        }
+
+        /* Estilos globales */
+        * {
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: var(--font-sans); 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-secondary); 
+            background-color: var(--bg-main); 
+            line-height: 1.7; 
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+        
+        /* Barra superior de métricas / estado al estilo Ai Inversiones */
+        .status-bar {
+            background: #030406;
+            border-bottom: 1px solid var(--border-color);
+            padding: 8px 20px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        /* Navegación */
+        header { 
+            background: rgba(8, 9, 13, 0.85); 
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.1rem 20px; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+
+        nav { 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px; 
+            margin: auto; 
+        }
+
+        .brand {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a { 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            font-weight: 400; 
+            font-size: 0.9rem;
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover { color: var(--text-primary); }
+
+        /* Contenedor principal */
+        section { 
+            padding: 100px 20px 60px; 
+            max-width: 1000px; 
+            margin: auto; 
+        }
+
+        h2 { 
+            color: var(--text-primary); 
+            font-size: 1.85rem; 
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            border-bottom: 1px solid var(--border-color); 
+            display: inline-block; 
+            margin-bottom: 40px; 
+            padding-bottom: 12px; 
+        }
+
+        .serif-italic {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* Hero Section */
+        .hero { 
+            padding: 140px 20px 80px; 
+            max-width: 950px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .hero h1 { 
+            font-size: 3.6rem; 
+            color: var(--text-primary); 
+            margin: 0 0 10px 0; 
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        .hero h3 { 
+            font-size: 1.5rem; 
+            color: var(--text-muted); 
+            margin-top: 0; 
+            font-weight: 400; 
+            letter-spacing: -0.3px;
+        }
+
+        .hero p { 
+            font-size: 1.2rem; 
+            max-width: 800px; 
+            margin: 32px 0 40px; 
+            color: var(--text-secondary); 
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* Botones */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn { 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff; 
+            color: #08090d; 
+            padding: 14px 28px; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            border: 1px solid #ffffff;
+        }
+
+        .btn:hover { 
+            background: rgba(255, 255, 255, 0.85); 
+            border-color: rgba(255, 255, 255, 0.85);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+        }
+
+        /* Cards & Grid de Servicios */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 24px; 
+            margin-top: 20px; 
+        }
+
+        .card { 
+            background: var(--bg-card); 
+            padding: 36px 30px; 
+            border-radius: 10px; 
+            border: 1px solid var(--border-color); 
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover { 
+            border-color: var(--border-hover); 
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .card h4 { 
+            color: var(--text-primary); 
+            font-size: 1.3rem; 
+            margin: 0 0 16px 0; 
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .card-tag {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+            margin: 0 0 12px 0;
+            font-weight: 300;
+        }
+
+        .card p strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer { 
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted); 
+            text-align: center; 
+            padding: 50px 20px; 
+            margin-top: 100px;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.6rem; }
+            .hero p { font-size: 1.05rem; }
+            .nav-links { gap: 16px; }
+            .status-bar { font-size: 0.72rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de estado ejecutivo -->
+    <div class="status-bar">
+        <div class="status-item">
+            <span class="dot"></span>
+            <span>ACOMPAÑAMIENTO FRACTIONAL & CONSULTORÍA</span>
+        </div>
+        <div class="status-item">
+            <span>ENFOQUE: EXCELENCIA OPERATIVA & GOBIERNO CORPORATIVO</span>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="#inicio" class="brand">Gabriel Gonzalez Puente</a>
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#sobre-mi">Perfil</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-badge">OPERATIONAL EXCELLENCE & STRATEGIC EXECUTION</div>
+        <h1>Gabriel Gonzalez Puente</h1>
+        <h3>Fractional Chief of Staff & Consulting </h3>
+        <p>Transformo prioridades estratégicas en ejecución operativa para empresas en fase de expansión. Pongo mi experiencia en Excelencia Operativa al servicio de CEOs para diseñar esquemas de KPI clave, destrabar proyectos multidepartamentales y optimizar la toma de decisiones.</p>
+        
+        <div class="btn-group">
+            <a href="#contacto" class="btn">Agendar reunión</a>
+            <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+        </div>
+    </section>
+
+    <section id="sobre-mi">
+        <h2>Sobre Mí</h2>
+        <p>Cuento con una sólida experiencia en empresas multinacionales maduras dentro de los sectores de Oil and Gas y Consumo Masivo. Durante mi carrera, me he desempeñado como Operational Excellence and Performance Manager, liderando proyectos complejos multidepartamentales y diseñando esquemas de gestión y KPIs avanzados.</p>
+        <p>Mi objetivo es actuar como un multiplicador del CEO, aportando el rigor analítico y la disciplina operativa de las grandes multinacionales, pero con la agilidad y flexibilidad que tu empresa necesita hoy.</p>
+    </section>
+
+    <section id="servicios">
+        <h2>Servicios Profesionales</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-tag">Sprint Inicial</div>
+                <h4>Operational Health Check</h4>
+                <p><strong>Formato:</strong> Proyecto cerrado de diagnóstico y diseño.</p>
+                <p>Realizo un mapeo de fricciones operativas para detectar cuellos de botella e ineficiencias interdepartamentales. Incluye una auditoría de tus KPIs actuales y el diseño del ritmo de gobierno corporativo (cadencia de reuniones y dashboards consolidados).</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-tag">Seguimiento Operativo</div>
+                <h4>Retainer de Acompañamiento</h4>
+                <p><strong>Formato:</strong> Fractional Chief of Staff continuo.</p>
+                <p>Me encargo de la facilitación del comité ejecutivo, el seguimiento riguroso de OKRs/KPIs y la resolución de bloqueos entre áreas. Reporto directamente al CEO para garantizar la alineación estratégica.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-tag">Por Proyecto u Objetivo</div>
+                <h4>Strategic Project Lead</h4>
+                <p><strong>Formato:</strong> Liderazgo de iniciativas clave.</p>
+                <p>Asumo el liderazgo de proyectos estratégicos transversales que no tienen un dueño claro (como rediseño de procesos core o implementaciones tecnológicas complejas) y los llevo a término de forma auditada y medible.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p style="font-size: 1.15rem; margin-bottom: 35px; max-width: 750px;">Si tu empresa busca dar el salto de una gestión empírica a un modelo de gobierno corporativo de alto rendimiento, hablemos para evaluar cómo puedo ayudarte a profesionalizar la operación sin perder agilidad.</p>
+        
+        <div class="btn-group">
+            <a href="#" class="btn">Conectar en LinkedIn</a>
+            <a href="#" class="btn btn-outline">Enviar mensaje directo</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Gabriel Gonzalez Puente. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
