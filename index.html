@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -109,6 +108,7 @@
 
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 32px;
         }
 
@@ -121,6 +121,38 @@
         }
 
         .nav-links a:hover { color: var(--text-primary); }
+
+        /* Botón Selector de Idioma */
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .lang-flag {
+            width: 16px;
+            height: 11px;
+            border-radius: 2px;
+            display: inline-block;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+        }
 
         /* Contenedor principal */
         section { 
@@ -297,7 +329,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.6rem; }
             .hero p { font-size: 1.05rem; }
-            .nav-links { gap: 16px; }
+            .nav-links { gap: 14px; }
             .status-bar { font-size: 0.72rem; }
         }
     </style>
@@ -316,10 +348,10 @@
     <div class="status-bar">
         <div class="status-item">
             <span class="dot"></span>
-            <span>ACOMPAÑAMIENTO FRACTIONAL & CONSULTORÍA</span>
+            <span data-es="ACOMPAÑAMIENTO FRACTIONAL & CONSULTORÍA" data-en="FRACTIONAL ADVISORY & CONSULTING">ACOMPAÑAMIENTO FRACTIONAL & CONSULTORÍA</span>
         </div>
         <div class="status-item">
-            <span>ENFOQUE: EXCELENCIA OPERATIVA & GOBIERNO CORPORATIVO</span>
+            <span data-es="ENFOQUE: EXCELENCIA OPERATIVA & GOBIERNO CORPORATIVO" data-en="FOCUS: OPERATIONAL EXCELLENCE & CORPORATE GOVERNANCE">ENFOQUE: EXCELENCIA OPERATIVA & GOBIERNO CORPORATIVO</span>
         </div>
     </div>
 
@@ -327,10 +359,20 @@
         <nav>
             <a href="#inicio" class="brand">Gabriel Gonzalez Puente</a>
             <div class="nav-links">
-                <a href="#inicio">Inicio</a>
-                <a href="#sobre-mi">Perfil</a>
-                <a href="#servicios">Servicios</a>
-                <a href="#contacto">Contacto</a>
+                <a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a>
+                <a href="#sobre-mi" data-es="Perfil" data-en="About">Perfil</a>
+                <a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+                <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+                <button id="lang-toggle" class="lang-btn" onclick="toggleLanguage()" title="Switch to English">
+                    <svg class="lang-flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="60" height="30" fill="#012169"/>
+                        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#ffffff" stroke-width="6"/>
+                        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3"/>
+                        <path d="M30,0 v30 M0,15 h60" stroke="#ffffff" stroke-width="10"/>
+                        <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                    </svg>
+                    <span>English</span>
+                </button>
             </div>
         </nav>
     </header>
@@ -338,66 +380,190 @@
     <section id="inicio" class="hero">
         <div class="hero-badge">OPERATIONAL EXCELLENCE & STRATEGIC EXECUTION</div>
         <h1>Gabriel Gonzalez Puente</h1>
-        <h3>Fractional Chief of Staff & Consulting </h3>
-        <p>Transformo prioridades estratégicas en ejecución operativa para empresas en fase de expansión. Pongo mi experiencia en Excelencia Operativa al servicio del director general o líder del área para diseñar esquemas de KPI clave, destrabar proyectos multidepartamentales y optimizar la toma de decisiones.</p>
+        <h3>Fractional Chief of Staff & Consulting</h3>
+        <p data-es="Transformo prioridades estratégicas en ejecución operativa para empresas en fase de expansión. Pongo mi experiencia en Excelencia Operativa al servicio del director general o líder del área para diseñar esquemas de KPI clave, destrabar proyectos multidepartamentales y optimizar la toma de decisiones."
+           data-en="I turn strategic priorities into operational execution for scaling companies. I put my Operational Excellence background at the service of the CEO or functional leader to design key KPI frameworks, unblock cross-functional projects, and optimize decision-making.">
+           Transformo prioridades estratégicas en ejecución operativa para empresas en fase de expansión. Pongo mi experiencia en Excelencia Operativa al servicio del director general o líder del área para diseñar esquemas de KPI clave, destrabar proyectos multidepartamentales y optimizar la toma de decisiones.
+        </p>
         
         <div class="btn-group">
-            <a href="https://wa.me/541130838403/?text=Hola%20Gabriel,%20te%20contacto%20para%20agendar%20una%20reunión%20inicial"
+            <a id="wa-hero-btn"
+                href="https://wa.me/541130838403/?text=Hola%20Gabriel,%20te%20contacto%20para%20agendar%20una%20reunión%20inicial"
+                data-href-es="https://wa.me/541130838403/?text=Hola%20Gabriel,%20te%20contacto%20para%20agendar%20una%20reunión%20inicial"
+                data-href-en="https://wa.me/541130838403/?text=Hi%20Gabriel,%20I'm%20reaching%20out%20to%20schedule%20an%20initial%20meeting"
                 onclick="gtag('event', 'click_cta', { 'event_category': 'Conversión', 'event_label': 'WhatsApp_SUP' });"
-                class="btn">Agendar reunión</a>
-            <a href="#servicios" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Ver servicios</a>
+                class="btn"
+                data-es="Agendar reunión"
+                data-en="Book a meeting">Agendar reunión</a>
+            <a href="#servicios" class="btn btn-outline" data-es="Ver servicios" data-en="View services">Ver servicios</a>
         </div>
     </section>
 
     <section id="sobre-mi">
-        <h2>Sobre Mí</h2>
-        <p>Cuento con una sólida experiencia en empresas multinacionales maduras dentro de los sectores de Oil and Gas y Consumo Masivo. Durante mi carrera, me he desempeñado como Operational Excellence and Performance Manager, liderando proyectos complejos multidepartamentales y diseñando esquemas de gestión y KPIs avanzados.</p>
-        <p>Mi objetivo es actuar como un multiplicador del CEO, aportando el rigor analítico y la disciplina operativa de las grandes multinacionales, pero con la agilidad y flexibilidad que tu empresa necesita hoy.</p>
+        <h2 data-es="Sobre Mí" data-en="About Me">Sobre Mí</h2>
+        <p data-es="Cuento con una sólida experiencia en empresas multinacionales maduras dentro de los sectores de Oil and Gas y Consumo Masivo. Durante mi carrera, me he desempeñado como Operational Excellence and Performance Manager, liderando proyectos complejos multidepartamentales y diseñando esquemas de gestión y KPIs avanzados."
+           data-en="I bring solid experience from mature multinational corporations within the Oil & Gas and FMCG sectors. Throughout my career, I have served as an Operational Excellence and Performance Manager, leading complex cross-functional projects and designing advanced management and KPI frameworks.">
+           Cuento con una sólida experiencia en empresas multinacionales maduras dentro de los sectores de Oil and Gas y Consumo Masivo. Durante mi carrera, me he desempeñado como Operational Excellence and Performance Manager, liderando proyectos complejos multidepartamentales y diseñando esquemas de gestión y KPIs avanzados.
+        </p>
+        <p data-es="Mi objetivo es actuar como un multiplicador del CEO, aportando el rigor analítico y la disciplina operativa de las grandes multinacionales, pero con la agilidad y flexibilidad que tu empresa necesita hoy."
+           data-en="My goal is to act as a force multiplier for the CEO, bringing the analytical rigor and operational discipline of large multinationals, combined with the agility and flexibility your company needs today.">
+           Mi objetivo es actuar como un multiplicador del CEO, aportando el rigor analítico y la disciplina operativa de las grandes multinacionales, pero con la agilidad y flexibilidad que tu empresa necesita hoy.
+        </p>
     </section>
 
     <section id="servicios">
-        <h2>Servicios Profesionales</h2>
+        <h2 data-es="Servicios Profesionales" data-en="Professional Services">Servicios Profesionales</h2>
         <div class="grid">
             <div class="card">
-                <div class="card-tag">Consultoría</div>
+                <div class="card-tag" data-es="Consultoría" data-en="Consulting">Consultoría</div>
                 <h4>Operational Health Check</h4>
-                <p><strong>Formato:</strong> Proyecto cerrado de diagnóstico y diseño</p>
-                <p>Realizo un mapeo de fricciones operativas para detectar cuellos de botella e ineficiencias interdepartamentales. Incluye una auditoría de tus KPIs actuales y el diseño del ritmo de gobierno corporativo (cadencia de reuniones y dashboards consolidados).</p>
+                <p>
+                    <strong data-es="Formato:" data-en="Format:">Formato:</strong> 
+                    <span data-es="Proyecto cerrado de diagnóstico y diseño" data-en="Fixed-scope diagnostic and design project">Proyecto cerrado de diagnóstico y diseño</span>
+                </p>
+                <p data-es="Realizo un mapeo de fricciones operativas para detectar cuellos de botella e ineficiencias interdepartamentales. Incluye una auditoría de tus KPIs actuales y el diseño del ritmo de gobierno corporativo (cadencia de reuniones y dashboards consolidados)."
+                   data-en="I map operational frictions to detect bottlenecks and cross-departmental inefficiencies. Includes an audit of your current KPIs and the design of a corporate governance rhythm (meeting cadence and consolidated dashboards).">
+                   Realizo un mapeo de fricciones operativas para detectar cuellos de botella e ineficiencias interdepartamentales. Incluye una auditoría de tus KPIs actuales y el diseño del ritmo de gobierno corporativo (cadencia de reuniones y dashboards consolidados).
+                </p>
             </div>
             
             <div class="card">
-                <div class="card-tag">Seguimiento Operativo</div>
-                <h4>Retainer de Acompañamiento</h4>
-                <p><strong>Formato:</strong> Fractional Chief of Staff continuo</p>
-                <p>Me encargo de la facilitación del comité ejecutivo, el seguimiento riguroso de OKRs/KPIs y la resolución de bloqueos entre áreas. Reporto directamente al CEO o director del área para garantizar la alineación estratégica.</p>
+                <div class="card-tag" data-es="Seguimiento Operativo" data-en="Operational Oversight">Seguimiento Operativo</div>
+                <h4 data-es="Retainer de Acompañamiento" data-en="Advisory Retainer">Retainer de Acompañamiento</h4>
+                <p>
+                    <strong data-es="Formato:" data-en="Format:">Formato:</strong> 
+                    <span data-es="Fractional Chief of Staff continuo" data-en="Ongoing Fractional Chief of Staff">Fractional Chief of Staff continuo</span>
+                </p>
+                <p data-es="Me encargo de la facilitación del comité ejecutivo, el seguimiento riguroso de OKRs/KPIs y la resolución de bloqueos entre áreas. Reporto directamente al CEO o director del área para garantizar la alineación estratégica."
+                   data-en="I handle executive committee facilitation, rigorous OKR/KPI tracking, and cross-functional blocker resolution. I report directly to the CEO or functional leader to ensure seamless strategic alignment.">
+                   Me encargo de la facilitación del comité ejecutivo, el seguimiento riguroso de OKRs/KPIs y la resolución de bloqueos entre áreas. Reporto directamente al CEO o director del área para garantizar la alineación estratégica.
+                </p>
             </div>
             
             <div class="card">
-                <div class="card-tag">Por Proyecto u Objetivo</div>
+                <div class="card-tag" data-es="Por Proyecto u Objetivo" data-en="Project or Goal-Based">Por Proyecto u Objetivo</div>
                 <h4>Strategic Project Lead</h4>
-                <p><strong>Formato:</strong> Liderazgo de iniciativas clave</p>
-                <p>Asumo el liderazgo de proyectos estratégicos transversales que no tienen un dueño claro (como rediseño de procesos core o implementaciones tecnológicas complejas) y los llevo a término de forma auditada y medible.</p>
+                <p>
+                    <strong data-es="Formato:" data-en="Format:">Formato:</strong> 
+                    <span data-es="Liderazgo de iniciativas clave" data-en="Leadership of key initiatives">Liderazgo de iniciativas clave</span>
+                </p>
+                <p data-es="Asumo el liderazgo de proyectos estratégicos transversales que no tienen un dueño claro (como rediseño de procesos core o implementaciones tecnológicas complejas) y los llevo a término de forma auditada y medible."
+                   data-en="I take ownership of cross-functional strategic projects lacking a clear owner (such as core process redesigns or complex tech implementations) and drive them to completion in an audited, measurable way.">
+                   Asumo el liderazgo de proyectos estratégicos transversales que no tienen un dueño claro (como rediseño de procesos core o implementaciones tecnológicas complejas) y los llevo a término de forma auditada y medible.
+                </p>
             </div>
         </div>
     </section>
 
     <section id="contacto">
-        <h2>Contacto</h2>
-        <p style="font-size: 1.15rem; margin-bottom: 35px; max-width: 750px;">Si tu empresa busca dar el salto de una gestión empírica a un modelo de gobierno corporativo de alto rendimiento, hablemos para evaluar cómo puedo ayudarte a profesionalizar la operación sin perder agilidad.</p>
+        <h2 data-es="Contacto" data-en="Contact">Contacto</h2>
+        <p style="font-size: 1.15rem; margin-bottom: 35px; max-width: 750px;"
+           data-es="Si tu empresa busca dar el salto de una gestión empírica a un modelo de gobierno corporativo de alto rendimiento, hablemos para evaluar cómo puedo ayudarte a profesionalizar la operación sin perder agilidad."
+           data-en="If your company is looking to leap from empirical management to a high-performance corporate governance model, let's talk to evaluate how I can help you professionalize operations without losing agility.">
+           Si tu empresa busca dar el salto de una gestión empírica a un modelo de gobierno corporativo de alto rendimiento, hablemos para evaluar cómo puedo ayudarte a profesionalizar la operación sin perder agilidad.
+        </p>
         
         <div class="btn-group">
             <a href="https://www.linkedin.com/in/gabrielgonzalezpuente/" target="_blank" rel="noopener noreferrer"
                 onclick="gtag('event', 'click_cta', { 'event_category': 'Conversión', 'event_label': 'LinkedIn' });"
-                class="btn">Conectar en LinkedIn</a>
+                class="btn"
+                data-es="Conectar en LinkedIn"
+                data-en="Connect on LinkedIn">Conectar en LinkedIn</a>
             <a href="https://wa.me/541130838403" target="_blank" rel="noopener noreferrer"
                 onclick="gtag('event', 'click_cta', { 'event_category': 'Conversión', 'event_label': 'WhatsApp_INF' });"
-                class="btn btn-outline">Enviar mensaje directo</a>
+                class="btn btn-outline"
+                data-es="Enviar mensaje directo"
+                data-en="Send direct message">Enviar mensaje directo</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Gabriel Gonzalez Puente. Todos los derechos reservados.</p>
+        <p data-es="&copy; 2026 Gabriel Gonzalez Puente. Todos los derechos reservados."
+           data-en="&copy; 2026 Gabriel Gonzalez Puente. All rights reserved.">
+           &copy; 2026 Gabriel Gonzalez Puente. Todos los derechos reservados.
+        </p>
     </footer>
+
+    <script>
+        let currentLang = 'es';
+
+        const ukFlagSvg = `
+            <svg class="lang-flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="30" fill="#012169"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#ffffff" stroke-width="6"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="3"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#ffffff" stroke-width="10"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+            </svg>
+        `;
+
+        const arFlagSvg = `
+            <svg class="lang-flag" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="12" y="0" fill="#74ACDF"/>
+                <rect width="60" height="12" y="12" fill="#FFFFFF"/>
+                <rect width="60" height="12" y="24" fill="#74ACDF"/>
+                <circle cx="30" cy="18" r="3.5" fill="#F6B40E"/>
+            </svg>
+        `;
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            
+            // Actualizar todos los textos con atributos data-es / data-en
+            document.querySelectorAll('[data-es]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${lang}`);
+            });
+
+            // Actualizar enlaces dinámicos según idioma (ej. mensaje predeterminado de WhatsApp)
+            document.querySelectorAll('[data-href-es]').forEach(el => {
+                el.setAttribute('href', el.getAttribute(`data-href-${lang}`));
+            });
+
+            // Actualizar botón selector: muestra "English" + bandera UK cuando la web está en Español,
+            // y "Español" + bandera Argentina cuando la web está en Inglés
+            const toggleBtn = document.getElementById('lang-toggle');
+            if (toggleBtn) {
+                if (lang === 'es') {
+                    toggleBtn.innerHTML = `${ukFlagSvg}<span>English</span>`;
+                    toggleBtn.setAttribute('title', 'Switch to English');
+                } else {
+                    toggleBtn.innerHTML = `${arFlagSvg}<span>Español</span>`;
+                    toggleBtn.setAttribute('title', 'Cambiar a Español');
+                }
+            }
+            
+            // Actualizar atributo lang de la etiqueta html
+            document.documentElement.lang = lang;
+        }
+
+        function toggleLanguage() {
+            const nextLang = currentLang === 'es' ? 'en' : 'es';
+            applyLanguage(nextLang);
+            
+            // Actualizar el parámetro ?lang= en la URL sin recargar la página
+            const url = new URL(window.location);
+            if (nextLang === 'es') {
+                url.searchParams.delete('lang');
+            } else {
+                url.searchParams.set('lang', nextLang);
+            }
+            window.history.replaceState({}, '', url);
+        }
+
+        // Prioridad al cargar la página:
+        // 1. Parámetro explícito en la URL (?lang=en)
+        // 2. Español por defecto siempre que no se indique ?lang=en
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+
+            if (langParam === 'en') {
+                applyLanguage('en');
+            } else {
+                applyLanguage('es');
+            }
+        });
+    </script>
 
 </body>
 </html>
